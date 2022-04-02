@@ -14,5 +14,9 @@ public interface UsersRepository extends MongoRepository<Users, String> {
 	public List<Users> findByStatus(String status);
 	
 	public Optional<Users> findByUserId(String userId);
+
+	public Boolean existsByUserId(String userId);
+
+	public Boolean existsByUserIdAndIdNotIn(String userId, String id);
 	
 }

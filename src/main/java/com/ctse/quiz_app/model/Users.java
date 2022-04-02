@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Users {
 
 	@Id
-	private Integer id;
+	private String id;
 	
 	private String firstName;
 	
@@ -19,15 +19,19 @@ public class Users {
 	
 	private String password;
 	
-	private String status;
-	
 	private String role;
+	
+	private String status;
 
-	public Integer getId() {
+	private String createdDate;
+	
+	private String modifiedDate;
+	
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -85,6 +89,22 @@ public class Users {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(String modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 	
 }
