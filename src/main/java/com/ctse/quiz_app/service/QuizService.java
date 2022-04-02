@@ -15,7 +15,7 @@ public interface QuizService {
 	
 	public List<Quiz> findByStatus(String status);
 	
-	public Optional<Quiz> findByName(String name);
+	public List<Quiz> findByName(String name);
 	
 	public List<Quiz> findByCategoryId(String categoryId);
 	

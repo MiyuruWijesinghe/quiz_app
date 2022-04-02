@@ -51,7 +51,11 @@ public class Quiz {
 	}
 
 	public String getCategoryId() {
-		return categoryId;
+		if (categorys != null) {
+			return categorys.getId();
+		} else {
+			return null;
+		}
 	}
 
 	public void setCategoryId(String categoryId) {
@@ -59,7 +63,11 @@ public class Quiz {
 	}
 
 	public String getCategoryName() {
-		return categoryName;
+		if (categorys != null) {
+			return categorys.getName();
+		} else {
+			return null;
+		}
 	}
 
 	public void setCategoryName(String categoryName) {

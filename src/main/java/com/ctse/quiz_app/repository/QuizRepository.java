@@ -13,7 +13,7 @@ public interface QuizRepository extends MongoRepository<Quiz, String> {
 	
 	public List<Quiz> findByStatus(String status);
 
-	public Optional<Quiz> findByName(String name);
+	public List<Quiz> findByNameContains(String name);
 
 	public Optional<Quiz> findByIdAndStatus(String id, String status);
 	

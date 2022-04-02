@@ -25,5 +25,9 @@ public interface OptionsRepository extends MongoRepository<Options, String> {
 
 	public Boolean existsByQuestionsIdAndTextAndIdNotIn(String questionsId, String text, String id);
 	
+	public Boolean existsByQuestionsIdAndCode(String questionsId, String code);
+
+	public Boolean existsByQuestionsIdAndCodeAndIdNotIn(String questionsId, String code, String id);
+	
 	public void deleteById(String id);
 }

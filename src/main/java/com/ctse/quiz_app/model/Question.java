@@ -55,7 +55,11 @@ public class Question {
 	}
 
 	public String getQuizId() {
-		return quizId;
+		if (quizs != null) {
+			return quizs.getId();
+		} else {
+			return null;
+		}
 	}
 
 	public void setQuizId(String quizId) {
@@ -63,7 +67,11 @@ public class Question {
 	}
 
 	public String getQuizName() {
-		return quizName;
+		if (quizs != null) {
+			return quizs.getName();
+		} else {
+			return null;
+		}
 	}
 
 	public void setQuizName(String quizName) {

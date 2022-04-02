@@ -11,6 +11,7 @@ public class OptionsResource {
     private String questionId;
 	
 	@NotBlank(message = "{common.not-null}")
+	@Pattern(regexp = "^$|A|B|C|D",message="{code.pattern}")
 	private String code;
 
 	@NotBlank(message = "{common.not-null}")

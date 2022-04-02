@@ -60,13 +60,8 @@ public class QuizServiceImpl implements QuizService {
 	}
 
 	@Override
-	public Optional<Quiz> findByName(String name) {
-		Optional<Quiz> quiz = quizRepository.findByName(name);
-		if (quiz.isPresent()) {
-			return Optional.ofNullable(quiz.get());
-		} else {
-			return Optional.empty();
-		}
+	public List<Quiz> findByName(String name) {
+		return quizRepository.findByNameContains(name);
 	}
 
 	@Override

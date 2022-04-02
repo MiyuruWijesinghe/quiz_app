@@ -24,7 +24,7 @@ import com.ctse.quiz_app.service.QuizService;
 
 
 @RestController
-@RequestMapping(value = "/quizs")
+@RequestMapping(value = "/quiz")
 @CrossOrigin(origins = "*")
 public class QuizController {
 
@@ -100,9 +100,9 @@ public class QuizController {
 	@GetMapping(value = "/name/{name}")
 	public ResponseEntity<Object> getQuizByName(@PathVariable(value = "name", required = true) String name) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
-		Optional<Quiz> isPresentQuiz = quizService.findByName(name);
-		if (isPresentQuiz.isPresent()) {
-			return new ResponseEntity<>(isPresentQuiz, HttpStatus.OK);
+		List<Quiz> quizes = quizService.findByName(name);
+		if (!quizes.isEmpty()) {
+			return new ResponseEntity<>((Collection<Quiz>) quizes, HttpStatus.OK);
 		} else {
 			responseMessage.setMessages(environment.getProperty("common.record-not-found"));
 			return new ResponseEntity<>(responseMessage, HttpStatus.NO_CONTENT);

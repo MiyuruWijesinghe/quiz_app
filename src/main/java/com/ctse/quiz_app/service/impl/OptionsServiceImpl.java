@@ -75,7 +75,11 @@ public class OptionsServiceImpl implements OptionsService {
 		Options options = new Options();
 		
 		if (optionsRepository.existsByQuestionsIdAndText(optionsResource.getQuestionId(), optionsResource.getText())) {
-			throw new ValidateRecordException(environment.getProperty("option.duplicate"), "message");
+			throw new ValidateRecordException(environment.getProperty("option.duplicate1"), "message");
+		}
+		
+		if (optionsRepository.existsByQuestionsIdAndCode(optionsResource.getQuestionId(), optionsResource.getCode())) {
+			throw new ValidateRecordException(environment.getProperty("option.duplicate2"), "message");
 		}
 		
 		Optional<Question> question = questionRepository.findByIdAndStatus(optionsResource.getQuestionId(), CommonStatus.ACTIVE.toString());
@@ -107,7 +111,11 @@ public class OptionsServiceImpl implements OptionsService {
 		}
 		
 		if (optionsRepository.existsByQuestionsIdAndTextAndIdNotIn(optionsResource.getQuestionId(), optionsResource.getText(), id)) {
-			throw new ValidateRecordException(environment.getProperty("option.duplicate"), "message");
+			throw new ValidateRecordException(environment.getProperty("option.duplicate1"), "message");
+		}
+		
+		if (optionsRepository.existsByQuestionsIdAndCodeAndIdNotIn(optionsResource.getQuestionId(), optionsResource.getCode(), id)) {
+			throw new ValidateRecordException(environment.getProperty("option.duplicate2"), "message");
 		}
 			
 		Options options = isPresentOption.get();

@@ -53,7 +53,11 @@ public class Options {
 	}
 
 	public String getQuestionId() {
-		return questionId;
+		if (questions != null) {
+			return questions.getId();
+		} else {
+			return null;
+		}
 	}
 
 	public void setQuestionId(String questionId) {
@@ -61,7 +65,11 @@ public class Options {
 	}
 
 	public String getQuestionName() {
-		return questionName;
+		if (questions != null) {
+			return questions.getText();
+		} else {
+			return null;
+		}
 	}
 
 	public void setQuestionName(String questionName) {
