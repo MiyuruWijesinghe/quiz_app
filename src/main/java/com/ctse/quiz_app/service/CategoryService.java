@@ -11,16 +11,16 @@ public interface CategoryService {
 
 	public List<Category> findAll();
 	
-	public Optional<Category> findById(int id);
+	public Optional<Category> findById(String id);
 	
 	public List<Category> findByStatus(String status);
 	
-	public List<Category> findByName(String name);
+	public Optional<Category> findByName(String name);
 	
-	public Integer saveCategory(String username, CategoryResource categoryResource);
+	public Category saveCategory(String username, CategoryResource categoryResource);
 	
-	public Category updateCategory(int id, String username, CategoryResource categoryResource);
+	public Category updateCategory(String id, String username, CategoryResource categoryResource);
 	
-	public String deleteCategory(int id);
+	public String deleteCategory(String id);
 	
 }

@@ -8,15 +8,19 @@ import com.ctse.quiz_app.model.Category;
 
 
 @Repository
-public interface CategoryRepository extends MongoRepository<Category, Integer> {
+public interface CategoryRepository extends MongoRepository<Category, String> {
 
+	public Optional<Category> findById(String id);
+	
 	public List<Category> findByStatus(String status);
 
 	public Optional<Category> findByName(String name);
+
+	public Optional<Category> findByIdAndStatus(String id, String name);
+
+	public Boolean existsByName(String name);
+
+	public Boolean existsByNameAndIdNotIn(String name, String id);
 	
-	public List<Category> findByNameContaining(String name);
-
-	public Optional<Category> findByNameAndIdNotIn(String name, int id);
-
-	public Optional<Category> findByIdAndStatus(int id, String name);
+	public void deleteById(String id);
 }

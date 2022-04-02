@@ -15,11 +15,16 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
 import com.ctse.quiz_app.exception.NoRecordFoundException;
 import com.ctse.quiz_app.exception.UserNotFoundException;
 import com.ctse.quiz_app.exception.ValidateRecordException;
 import com.ctse.quiz_app.resource.CategoryResource;
+import com.ctse.quiz_app.resource.OptionsResource;
+import com.ctse.quiz_app.resource.QuestionResource;
+import com.ctse.quiz_app.resource.QuizResource;
 import com.ctse.quiz_app.resource.SuccessAndErrorDetailsResource;
+import com.ctse.quiz_app.resource.UsersResource;
 import com.ctse.quiz_app.resource.ValidateResource;
 
 
@@ -80,14 +85,38 @@ public class BaseResponseEntityExceptionHandler extends ResponseEntityExceptionH
 					sField.set(categoryResource.getClass().cast(categoryResource), error.getDefaultMessage());
 				}
 				return new ResponseEntity<>(categoryResource, HttpStatus.UNPROCESSABLE_ENTITY);	
-			//case "ordersUpdateResource":
-				//OrdersUpdateResource ordersUpdateResource = new OrdersUpdateResource();
-				//for (FieldError error : ex.getBindingResult().getFieldErrors()) {
-					//sField = ordersUpdateResource.getClass().getDeclaredField(error.getField());
-					//sField.setAccessible(true);
-					//sField.set(ordersUpdateResource.getClass().cast(ordersUpdateResource), error.getDefaultMessage());
-				//}
-				//return new ResponseEntity<>(ordersUpdateResource, HttpStatus.UNPROCESSABLE_ENTITY);
+			case "quizResource":
+				QuizResource quizResource = new QuizResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					sField = quizResource.getClass().getDeclaredField(error.getField());
+					sField.setAccessible(true);
+					sField.set(quizResource.getClass().cast(quizResource), error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(quizResource, HttpStatus.UNPROCESSABLE_ENTITY);		
+			case "questionResource":
+				QuestionResource questionResource = new QuestionResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					sField = questionResource.getClass().getDeclaredField(error.getField());
+					sField.setAccessible(true);
+					sField.set(questionResource.getClass().cast(questionResource), error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(questionResource, HttpStatus.UNPROCESSABLE_ENTITY);
+			case "optionsResource":
+				OptionsResource optionsResource = new OptionsResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					sField = optionsResource.getClass().getDeclaredField(error.getField());
+					sField.setAccessible(true);
+					sField.set(optionsResource.getClass().cast(optionsResource), error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(optionsResource, HttpStatus.UNPROCESSABLE_ENTITY);	
+			case "usersResource":
+				UsersResource usersResource = new UsersResource();
+				for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+					sField = usersResource.getClass().getDeclaredField(error.getField());
+					sField.setAccessible(true);
+					sField.set(usersResource.getClass().cast(usersResource), error.getDefaultMessage());
+				}
+				return new ResponseEntity<>(usersResource, HttpStatus.UNPROCESSABLE_ENTITY);		
 			default:
 				return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
 			}

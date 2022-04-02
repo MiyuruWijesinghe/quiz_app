@@ -1,23 +1,30 @@
 package com.ctse.quiz_app.model;
 
+import javax.persistence.Transient;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Document(collection = "Category")
-public class Category {
+@Document(collection = "Options")
+public class Options {
 
 	@Id
 	private String id;
 	
-	private String name;
+	@JsonIgnore
+	private Question questions;
 	
-	private String description;
+	@Transient
+    private String questionId;
 	
-	private String imageURL;
+	@Transient
+    private String questionName;
 	
-	private String icon;
+	private String code;
 	
-	private String backgroundColor;
+	private String text;
+	
+	private Boolean isCorrect;
 	
 	private String status;
 	
@@ -37,28 +44,52 @@ public class Category {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Question getQuestions() {
+		return questions;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setQuestions(Question questions) {
+		this.questions = questions;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getQuestionId() {
+		return questionId;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setQuestionId(String questionId) {
+		this.questionId = questionId;
 	}
 
-	public String getImageURL() {
-		return imageURL;
+	public String getQuestionName() {
+		return questionName;
 	}
 
-	public void setImageURL(String imageURL) {
-		this.imageURL = imageURL;
+	public void setQuestionName(String questionName) {
+		this.questionName = questionName;
+	}
+	
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public Boolean getIsCorrect() {
+		return isCorrect;
+	}
+
+	public void setIsCorrect(Boolean isCorrect) {
+		this.isCorrect = isCorrect;
 	}
 
 	public String getStatus() {
@@ -99,22 +130,6 @@ public class Category {
 
 	public void setModifiedDate(String modifiedDate) {
 		this.modifiedDate = modifiedDate;
-	}
-
-	public String getIcon() {
-		return icon;
-	}
-
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
-
-	public String getBackgroundColor() {
-		return backgroundColor;
-	}
-
-	public void setBackgroundColor(String backgroundColor) {
-		this.backgroundColor = backgroundColor;
 	}
 	
 }

@@ -60,7 +60,7 @@ public class CategoryController {
 	 * @return the category by id
 	 */
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Object> getCategoryById(@PathVariable(value = "id", required = true) int id) {
+	public ResponseEntity<Object> getCategoryById(@PathVariable(value = "id", required = true) String id) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
 		Optional<Category> isPresentCategory = categoryService.findById(id);
 		if (isPresentCategory.isPresent()) {
@@ -100,9 +100,9 @@ public class CategoryController {
 	@GetMapping(value = "/name/{name}")
 	public ResponseEntity<Object> getCategorysByName(@PathVariable(value = "name", required = true) String name) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
-		List<Category> category = categoryService.findByName(name);
-		if (!category.isEmpty()) {
-			return new ResponseEntity<>((Collection<Category>) category, HttpStatus.OK);
+		Optional<Category> isPresentCategory = categoryService.findByName(name);
+		if (isPresentCategory.isPresent()) {
+			return new ResponseEntity<>(isPresentCategory, HttpStatus.OK);
 		} else {
 			responseMessage.setMessages(environment.getProperty("common.record-not-found"));
 			return new ResponseEntity<>(responseMessage, HttpStatus.NO_CONTENT);
@@ -119,8 +119,8 @@ public class CategoryController {
 	@PostMapping(value = "/{username}/save")
 	public ResponseEntity<Object> addCategory(@PathVariable(value = "username", required = true) String username,
 											  @Valid @RequestBody CategoryResource categoryResource) {
-		Integer categoryId = categoryService.saveCategory(username, categoryResource);
-		SuccessAndErrorDetailsResource successDetailsDto = new SuccessAndErrorDetailsResource(environment.getProperty("common.saved"), categoryId.toString());
+		Category category = categoryService.saveCategory(username, categoryResource);
+		SuccessAndErrorDetailsResource successDetailsDto = new SuccessAndErrorDetailsResource(environment.getProperty("common.saved"), category);
 		return new ResponseEntity<>(successDetailsDto, HttpStatus.CREATED);
 	}
 	
@@ -134,7 +134,7 @@ public class CategoryController {
 	 */
 	@PutMapping(value = "/{username}/{id}")
 	public ResponseEntity<Object> updateCategory(@PathVariable(value = "username", required = true) String username,
-												 @PathVariable(value = "id", required = true) int id,
+												 @PathVariable(value = "id", required = true) String id,
 												 @Valid @RequestBody CategoryResource categoryResource) {
 		Category category = categoryService.updateCategory(id, username, categoryResource);
 		SuccessAndErrorDetailsResource successDetailsDto = new SuccessAndErrorDetailsResource(environment.getProperty("common.updated"), category);
@@ -149,7 +149,7 @@ public class CategoryController {
 	 * @return the response entity
 	 */
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Object> deleteCategory(@PathVariable(value = "id", required = true) int id) {
+	public ResponseEntity<Object> deleteCategory(@PathVariable(value = "id", required = true) String id) {
 		String message = categoryService.deleteCategory(id);
 		SuccessAndErrorDetailsResource successDetailsDto = new SuccessAndErrorDetailsResource(message);
 		return new ResponseEntity<>(successDetailsDto, HttpStatus.CREATED);

@@ -2,30 +2,31 @@ package com.ctse.quiz_app.resource;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-public class CategoryResource {
+public class QuizResource {
 
 	@NotBlank(message = "{common.not-null}")
-	@Size(max = 70, message = "{common-name.size}")
+    private String categoryId;
+	
+	@NotBlank(message = "{common.not-null}")
 	private String name;
-	
+
+	@NotBlank(message = "{common.not-null}")
 	private String description;
-	
-	@NotBlank(message = "{common.not-null}")
-	private String imageURL;
-	
-	@NotBlank(message = "{common.not-null}")
-	private String icon;
-	
-	@NotBlank(message = "{common.not-null}")
-	private String backgroundColor;
 	
 	@NotBlank(message = "{common.not-null}")
 	@Pattern(regexp = "^$|ACTIVE|INACTIVE",message="{common-status.pattern}")
 	private String status;
+
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
 
 	public String getName() {
 		return name;
@@ -43,36 +44,12 @@ public class CategoryResource {
 		this.description = description;
 	}
 
-	public String getImageURL() {
-		return imageURL;
-	}
-
-	public void setImageURL(String imageURL) {
-		this.imageURL = imageURL;
-	}
-
 	public String getStatus() {
 		return status;
 	}
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public String getIcon() {
-		return icon;
-	}
-
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
-
-	public String getBackgroundColor() {
-		return backgroundColor;
-	}
-
-	public void setBackgroundColor(String backgroundColor) {
-		this.backgroundColor = backgroundColor;
 	}
 	
 }

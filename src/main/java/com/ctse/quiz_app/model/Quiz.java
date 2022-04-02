@@ -1,23 +1,28 @@
 package com.ctse.quiz_app.model;
 
+import javax.persistence.Transient;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Document(collection = "Category")
-public class Category {
+@Document(collection = "Quiz")
+public class Quiz {
 
 	@Id
 	private String id;
 	
+	@JsonIgnore
+	private Category categorys;
+	
+	@Transient
+    private String categoryId;
+	
+	@Transient
+    private String categoryName;
+	
 	private String name;
 	
 	private String description;
-	
-	private String imageURL;
-	
-	private String icon;
-	
-	private String backgroundColor;
 	
 	private String status;
 	
@@ -37,6 +42,30 @@ public class Category {
 		this.id = id;
 	}
 
+	public Category getCategorys() {
+		return categorys;
+	}
+
+	public void setCategorys(Category categorys) {
+		this.categorys = categorys;
+	}
+
+	public String getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(String categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -51,14 +80,6 @@ public class Category {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getImageURL() {
-		return imageURL;
-	}
-
-	public void setImageURL(String imageURL) {
-		this.imageURL = imageURL;
 	}
 
 	public String getStatus() {
@@ -99,22 +120,6 @@ public class Category {
 
 	public void setModifiedDate(String modifiedDate) {
 		this.modifiedDate = modifiedDate;
-	}
-
-	public String getIcon() {
-		return icon;
-	}
-
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
-
-	public String getBackgroundColor() {
-		return backgroundColor;
-	}
-
-	public void setBackgroundColor(String backgroundColor) {
-		this.backgroundColor = backgroundColor;
 	}
 	
 }
