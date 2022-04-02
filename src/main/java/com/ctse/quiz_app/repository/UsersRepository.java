@@ -8,6 +8,17 @@ import org.springframework.stereotype.Repository;
 
 import com.ctse.quiz_app.model.Users;
 
+/**
+ * Users Repository
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   25-03-2022   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @Repository
 public interface UsersRepository extends MongoRepository<Users, String> {
 

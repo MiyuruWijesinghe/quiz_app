@@ -3,6 +3,17 @@ package com.ctse.quiz_app.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Users Domain
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   25-03-2022   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @Document(collection = "Users")
 public class Users {
 

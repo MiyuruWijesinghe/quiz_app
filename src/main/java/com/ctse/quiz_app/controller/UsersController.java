@@ -25,6 +25,17 @@ import com.ctse.quiz_app.resource.SuccessAndErrorDetailsResource;
 import com.ctse.quiz_app.resource.UsersResource;
 import com.ctse.quiz_app.service.UsersService;
 
+/**
+ * Users Controller
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   25-03-2022   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @RestController
 @RequestMapping(value = "/users")
 @CrossOrigin(origins = "*")

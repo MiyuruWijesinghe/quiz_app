@@ -3,6 +3,17 @@ package com.ctse.quiz_app.resource;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Response Resource
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   25-03-2022   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class SuccessAndErrorDetailsResource {
 	@JsonProperty("messages")

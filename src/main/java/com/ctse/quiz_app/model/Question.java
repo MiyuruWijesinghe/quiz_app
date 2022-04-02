@@ -5,6 +5,17 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * Questions Domain
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   25-03-2022   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @Document(collection = "Question")
 public class Question {
 

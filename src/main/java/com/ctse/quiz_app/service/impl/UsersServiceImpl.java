@@ -17,6 +17,17 @@ import com.ctse.quiz_app.repository.UsersRepository;
 import com.ctse.quiz_app.resource.UsersResource;
 import com.ctse.quiz_app.service.UsersService;
 
+/**
+ * Users Service Implementation
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   25-03-2022   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @Component
 @Transactional(rollbackFor=Exception.class)
 public class UsersServiceImpl implements UsersService {

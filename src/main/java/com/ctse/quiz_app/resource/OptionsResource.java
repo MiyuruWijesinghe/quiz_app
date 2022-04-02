@@ -4,6 +4,17 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Options Request Resource
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   25-03-2022   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
+
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class OptionsResource {
 

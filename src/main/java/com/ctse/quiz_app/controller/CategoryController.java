@@ -22,6 +22,16 @@ import com.ctse.quiz_app.resource.CategoryResource;
 import com.ctse.quiz_app.resource.SuccessAndErrorDetailsResource;
 import com.ctse.quiz_app.service.CategoryService;
 
+/**
+ * Category Controller
+ * 
+ ********************************************************************************************************
+ *  ###   Date         Author    IT No.        Description
+ *-------------------------------------------------------------------------------------------------------
+ *    1   25-03-2022   MiyuruW   IT19020990     Created
+ *    
+ ********************************************************************************************************
+ */
 
 @RestController
 @RequestMapping(value = "/category")
