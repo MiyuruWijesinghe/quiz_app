@@ -26,15 +26,15 @@ public interface OptionsRepository extends MongoRepository<Options, String> {
 	
 	public List<Options> findByStatus(String status);
 	
-	public List<Options> findByTextContains(String text);
+	public List<Options> findByNameContains(String name);
 
 	public Optional<Options> findByIdAndStatus(String id, String status);
 	
 	public List<Options> findByQuestionsId(String questionId);
 	
-	public Boolean existsByQuestionsIdAndText(String questionsId, String text);
+	public Boolean existsByQuestionsIdAndName(String questionsId, String name);
 
-	public Boolean existsByQuestionsIdAndTextAndIdNotIn(String questionsId, String text, String id);
+	public Boolean existsByQuestionsIdAndNameAndIdNotIn(String questionsId, String name, String id);
 	
 	public Boolean existsByQuestionsIdAndCode(String questionsId, String code);
 

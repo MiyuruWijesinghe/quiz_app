@@ -23,7 +23,7 @@ public class QuestionResource {
     private String quizId;
 	
 	@NotBlank(message = "{common.not-null}")
-	private String text;
+	private String name;
 
 	@NotBlank(message = "{common.not-null}")
 	private String solution;
@@ -44,12 +44,12 @@ public class QuestionResource {
 		this.quizId = quizId;
 	}
 
-	public String getText() {
-		return text;
+	public String getName() {
+		return name;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getSolution() {

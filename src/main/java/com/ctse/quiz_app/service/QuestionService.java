@@ -50,12 +50,12 @@ public interface QuestionService {
 	
 	
 	/**
-	 * Find by text.
+	 * Find by name.
 	 *
-	 * @param text - the text
+	 * @param name - the name
 	 * @return the list
 	 */
-	public List<Question> findByText(String text);
+	public List<Question> findByName(String name);
 	
 	
 	/**

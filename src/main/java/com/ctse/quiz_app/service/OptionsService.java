@@ -48,12 +48,12 @@ public interface OptionsService {
 	
 	
 	/**
-	 * Find by text.
+	 * Find by name.
 	 *
-	 * @param text - the text
+	 * @param name - the name
 	 * @return the list
 	 */
-	public List<Options> findByText(String text);
+	public List<Options> findByName(String name);
 	
 	
 	/**

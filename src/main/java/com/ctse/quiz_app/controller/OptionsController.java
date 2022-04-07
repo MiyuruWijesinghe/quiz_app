@@ -105,15 +105,15 @@ public class OptionsController {
 		
 	
 	/**
-	 * Gets the options by text.
+	 * Gets the options by name.
 	 *
-	 * @param text - the text
-	 * @return the options by text
+	 * @param name - the name
+	 * @return the options by name
 	 */
-	@GetMapping(value = "/text/{text}")
-	public ResponseEntity<Object> getOptionsByText(@PathVariable(value = "text", required = true) String text) {
+	@GetMapping(value = "/name/{name}")
+	public ResponseEntity<Object> getOptionsByText(@PathVariable(value = "name", required = true) String name) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
-		List<Options> options = optionsService.findByText(text);
+		List<Options> options = optionsService.findByName(name);
 		if (!options.isEmpty()) {
 			return new ResponseEntity<>((Collection<Options>) options, HttpStatus.OK);
 		} else {

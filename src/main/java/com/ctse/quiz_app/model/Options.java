@@ -33,7 +33,7 @@ public class Options {
 	
 	private String code;
 	
-	private String text;
+	private String name;
 	
 	private Boolean isCorrect;
 	
@@ -77,7 +77,7 @@ public class Options {
 
 	public String getQuestionName() {
 		if (questions != null) {
-			return questions.getText();
+			return questions.getName();
 		} else {
 			return null;
 		}
@@ -95,12 +95,12 @@ public class Options {
 		this.code = code;
 	}
 
-	public String getText() {
-		return text;
+	public String getName() {
+		return name;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Boolean getIsCorrect() {

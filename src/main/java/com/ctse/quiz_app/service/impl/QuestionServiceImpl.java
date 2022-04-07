@@ -72,8 +72,8 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public List<Question> findByText(String text) {
-		return questionRepository.findByTextContains(text);
+	public List<Question> findByName(String name) {
+		return questionRepository.findByNameContains(name);
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class QuestionServiceImpl implements QuestionService {
 	public Question saveQuestion(String username, QuestionResource questionResource) {
 		Question question = new Question();
 		
-		if (questionRepository.existsByQuizsIdAndText(questionResource.getQuizId(), questionResource.getText())) {
+		if (questionRepository.existsByQuizsIdAndName(questionResource.getQuizId(), questionResource.getName())) {
 			throw new ValidateRecordException(environment.getProperty("question.duplicate"), "message");
 		}
 		
@@ -96,7 +96,7 @@ public class QuestionServiceImpl implements QuestionService {
 			question.setQuizs(quiz.get());
 		}
 		
-        question.setText(questionResource.getText());
+        question.setName(questionResource.getName());
         question.setSolution(questionResource.getSolution());
         if (questionResource.getIsLocked().equalsIgnoreCase(EnableStatus.YES.toString())) {
         	question.setIsLocked(Boolean.TRUE);
@@ -117,7 +117,7 @@ public class QuestionServiceImpl implements QuestionService {
 			throw new NoRecordFoundException(environment.getProperty("common.record-not-found"));
 		}
 		
-		if (questionRepository.existsByQuizsIdAndTextAndIdNotIn(questionResource.getQuizId(), questionResource.getText(), id)) {
+		if (questionRepository.existsByQuizsIdAndNameAndIdNotIn(questionResource.getQuizId(), questionResource.getName(), id)) {
 			throw new ValidateRecordException(environment.getProperty("question.duplicate"), "message");
 		}
 			
@@ -130,7 +130,7 @@ public class QuestionServiceImpl implements QuestionService {
 			question.setQuizs(quiz.get());
 		}
 		
-		question.setText(questionResource.getText());
+		question.setName(questionResource.getName());
         question.setSolution(questionResource.getSolution());
         if (questionResource.getIsLocked().equalsIgnoreCase(EnableStatus.YES.toString())) {
         	question.setIsLocked(Boolean.TRUE);

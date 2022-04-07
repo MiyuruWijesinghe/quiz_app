@@ -26,7 +26,7 @@ public class OptionsResource {
 	private String code;
 
 	@NotBlank(message = "{common.not-null}")
-	private String text;
+	private String name;
 	
 	@NotBlank(message = "{common.not-null}")
 	@Pattern(regexp = "^$|YES|NO",message="{common.enable-status.pattern}")
@@ -52,12 +52,12 @@ public class OptionsResource {
 		this.code = code;
 	}
 
-	public String getText() {
-		return text;
+	public String getName() {
+		return name;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getIsCorrect() {

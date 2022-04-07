@@ -72,8 +72,8 @@ public class OptionsServiceImpl implements OptionsService {
 	}
 
 	@Override
-	public List<Options> findByText(String text) {
-		return optionsRepository.findByTextContains(text);
+	public List<Options> findByName(String name) {
+		return optionsRepository.findByNameContains(name);
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class OptionsServiceImpl implements OptionsService {
 	public Options saveOption(String username, OptionsResource optionsResource) {
 		Options options = new Options();
 		
-		if (optionsRepository.existsByQuestionsIdAndText(optionsResource.getQuestionId(), optionsResource.getText())) {
+		if (optionsRepository.existsByQuestionsIdAndName(optionsResource.getQuestionId(), optionsResource.getName())) {
 			throw new ValidateRecordException(environment.getProperty("option.duplicate1"), "message");
 		}
 		
@@ -101,7 +101,7 @@ public class OptionsServiceImpl implements OptionsService {
 		}
 		
 		options.setCode(optionsResource.getCode());
-		options.setText(optionsResource.getText());
+		options.setName(optionsResource.getName());
         if (optionsResource.getIsCorrect().equalsIgnoreCase(EnableStatus.YES.toString())) {
         	options.setIsCorrect(Boolean.TRUE);
         } else {
@@ -121,7 +121,7 @@ public class OptionsServiceImpl implements OptionsService {
 			throw new NoRecordFoundException(environment.getProperty("common.record-not-found"));
 		}
 		
-		if (optionsRepository.existsByQuestionsIdAndTextAndIdNotIn(optionsResource.getQuestionId(), optionsResource.getText(), id)) {
+		if (optionsRepository.existsByQuestionsIdAndNameAndIdNotIn(optionsResource.getQuestionId(), optionsResource.getName(), id)) {
 			throw new ValidateRecordException(environment.getProperty("option.duplicate1"), "message");
 		}
 		
@@ -139,7 +139,7 @@ public class OptionsServiceImpl implements OptionsService {
 		}
 		
 		options.setCode(optionsResource.getCode());
-		options.setText(optionsResource.getText());
+		options.setName(optionsResource.getName());
         if (optionsResource.getIsCorrect().equalsIgnoreCase(EnableStatus.YES.toString())) {
         	options.setIsCorrect(Boolean.TRUE);
         } else {

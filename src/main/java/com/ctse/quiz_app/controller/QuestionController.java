@@ -105,15 +105,15 @@ public class QuestionController {
 		
 	
 	/**
-	 * Gets the questions by text.
+	 * Gets the questions by name.
 	 *
-	 * @param text - the text
-	 * @return the questions by text
+	 * @param name - the name
+	 * @return the questions by name
 	 */
-	@GetMapping(value = "/text/{text}")
-	public ResponseEntity<Object> getQuestionsByText(@PathVariable(value = "text", required = true) String text) {
+	@GetMapping(value = "/name/{name}")
+	public ResponseEntity<Object> getQuestionsByName(@PathVariable(value = "name", required = true) String name) {
 		SuccessAndErrorDetailsResource responseMessage = new SuccessAndErrorDetailsResource();
-		List<Question> questions = questionService.findByText(text);
+		List<Question> questions = questionService.findByName(name);
 		if (!questions.isEmpty()) {
 			return new ResponseEntity<>((Collection<Question>) questions, HttpStatus.OK);
 		} else {

@@ -26,15 +26,15 @@ public interface QuestionRepository extends MongoRepository<Question, String> {
 	
 	public List<Question> findByStatus(String status);
 
-	public List<Question> findByTextContains(String text);
+	public List<Question> findByNameContains(String name);
 
 	public Optional<Question> findByIdAndStatus(String id, String name);
 	
 	public List<Question> findByQuizsId(String quizsId);
 
-	public Boolean existsByQuizsIdAndText(String quizsId, String text);
+	public Boolean existsByQuizsIdAndName(String quizsId, String name);
 
-	public Boolean existsByQuizsIdAndTextAndIdNotIn(String quizsId, String text, String id);
+	public Boolean existsByQuizsIdAndNameAndIdNotIn(String quizsId, String name, String id);
 	
 	public void deleteById(String id);
 }
